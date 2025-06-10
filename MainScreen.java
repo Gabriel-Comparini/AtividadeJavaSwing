@@ -18,7 +18,7 @@ public class MainScreen {
         Border borda = BorderFactory.createLineBorder(new Color(200, 200, 200), 1);
 
         JLabel titulo = new JLabel("<html><font color='#FF7420'>Cadastro de Pessoa</font></html>");
-        titulo.setBounds(30, 10, 330, 30);
+        titulo.setBounds(30, 10, 330, 40);
         titulo.setFont(new Font("Segoe UI Light", Font.BOLD, 35));
         tela.add(titulo);
 
@@ -296,7 +296,7 @@ public class MainScreen {
                 JTextField z = (JTextField) x;
 
                 //z.getText() == "" não funciona :(
-                if (z.getText().isEmpty()) {
+                if (z.getText().isBlank()) {
                     JOptionPane.showMessageDialog(y, "O cadastro não foi realizado, ainda faltam informações.");
                     return;
                 }
@@ -313,7 +313,13 @@ public class MainScreen {
     }
     
     public static void deleteFunc(JFrame y) {
-        
+        JLabel lblApagarusuario = new JLabel("Digite o nome do usuario para ser apagado: ");
+        JTextField txtApagarusuario = new JTextField();
+        JOptionPane.showConfirmDialog(null, new Object[]{lblApagarusuario, txtApagarusuario}, "Verificação", JOptionPane.OK_CANCEL_OPTION);
+        if(!txtApagarusuario.getText().isBlank()) {
+            JOptionPane.showMessageDialog(y, "O Usuario foi removido do formulário");
+            clearFunc(y);
+        }
     }
     
     public static void clearFunc(JFrame y) {
